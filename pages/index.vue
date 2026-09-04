@@ -31,14 +31,14 @@
     <!-- KOLOM KANAN: Form Login Modern -->
     <div class="login-right-pane">
       <div class="login-card-box">
-        <div>
-          <h2 class="text-3xl font-black text-slate-900 tracking-tight">Welcome Back!</h2>
-          <p class="text-sm text-slate-500 mt-2">Silakan masuk menggunakan akun terdaftar.</p>
+        <div class="card-title-area">
+          <h2>Welcome Back!</h2>
+          <p>Silakan masuk menggunakan akun terdaftar.</p>
         </div>
 
-        <form class="space-y-5" @submit.prevent="handleLogin">
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Email Address</label>
+        <form class="form-group-container" @submit.prevent="handleLogin">
+          <div class="input-group">
+            <label>Email Address</label>
             <input 
               type="email" 
               v-model="email"
@@ -48,10 +48,12 @@
             >
           </div>
 
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Password</label>
-              <a href="#" class="text-xs font-semibold text-indigo-600 hover:text-indigo-500">Lupa password?</a>
+          <div class="input-group">
+            <div class="label-row">
+              <label>Password</label>
+              <a :href="waForgotLink" target="_blank" class="forgot-link">
+                Lupa password?
+              </a>
             </div>
             <input 
               type="password" 
@@ -67,19 +69,21 @@
           </button>
         </form>
 
-        <div class="relative flex py-2 items-center">
-          <div class="flex-grow border-t border-slate-200"></div>
-          <span class="flex-shrink mx-4 text-xs text-slate-400 uppercase tracking-widest">or</span>
-          <div class="flex-grow border-t border-slate-200"></div>
+        <!-- Garis Pemisah dengan Tulisan "or" di Tengah -->
+        <div class="divider-or">
+          <span>or</span>
         </div>
 
-        <button type="button" class="btn-google">
-          <span>Continue with Google</span>
-        </button>
+        <!-- Hubungi Admin via WhatsApp -->
+        <div class="footer-register">
+          <p>
+            Belum punya akun? 
+            <a :href="waRegisterLink" target="_blank" class="wa-link">
+              Hubungi Admin via WhatsApp
+            </a>
+          </p>
+        </div>
 
-        <p class="text-center text-xs text-slate-500 pt-2">
-          Belum punya akun? <a href="#" class="font-bold text-indigo-600 hover:underline">Hubungi Admin Lab</a>
-        </p>
       </div>
     </div>
   </div>
@@ -91,13 +95,36 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      adminPhone: '62895640431365'
+    }
+  },
+  computed: {
+    waForgotLink() {
+      const message = encodeURIComponent("Halo Admin, saya ingin meminta bantuan untuk reset password akun IoT Lab saya.");
+      return `https://wa.me/${this.adminPhone}?text=${message}`;
+    },
+    waRegisterLink() {
+      const message = encodeURIComponent("Halo Admin, saya ingin mendaftarkan akun baru untuk akses portal IoT Lab.");
+      return `https://wa.me/${this.adminPhone}?text=${message}`;
     }
   },
   methods: {
-    handleLogin() {
-      console.log('Login dengan:', this.email);
-      alert('Fitur login berhasil dipicu! Siap dihubungkan ke backend API.');
+    async handleLogin() {
+      try {
+        // Melakukan request POST ke backend Slim PHP endpoint /api/login
+        const res = await this.$axios.$post('/api/login', {
+          email: this.email,
+          password: this.password
+        });
+        
+        console.log('Login sukses:', res.message);
+        // Jika berhasil (email & password cocok di database), pindah ke halaman welcome
+        this.$router.push('/wellcome');
+      } catch (err) {
+        console.error('Login gagal:', err);
+        alert('Login gagal! Periksa kembali email dan password kamu.');
+      }
     }
   }
 }

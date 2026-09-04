@@ -120,6 +120,11 @@
 
 .login-right-pane {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f8fafc;
 }
 
 @media (min-width: 768px) {
@@ -128,76 +133,151 @@
   }
 }
 
-.login-right-pane {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background-color: #f8fafc;
-}
-
+/* Card Container di Kanan */
 .login-card-box {
   width: 100%;
   max-width: 28rem;
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 1.5rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card-title-area h2 {
+  font-size: 1.875rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.35rem;
+}
+
+.card-title-area p {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.form-group-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4f46e5;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: #4338ca;
+  text-decoration: underline;
 }
 
 .input-field {
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
   outline: none;
   font-size: 0.875rem;
-  background-color: rgba(248, 250, 252, 0.5);
+  background-color: #f8fafc;
   transition: all 0.2s;
+  box-sizing: border-box;
+  color: #0f172a;
+}
+
+.input-field:focus {
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+  transition: background-color 0.2s;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
 }
 
 .btn-primary:hover {
   background-color: #4338ca;
 }
 
-.btn-primary {
-  width: 100%;
-  padding-top: 0.875rem;
-  padding-bottom: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  background-color: #4f46e5;
-  color: #ffffff;
-  font-weight: bold;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
-  transition: all 0.2s;
-  font-size: 0.875rem;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  background-color: file(#4338ca);
-}
-
-.btn-google {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: #ffffff;
-  color: #334155;
-  font-weight: 600;
-  border-radius: 0.75rem;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s;
-  font-size: 0.875rem;
+/* Garis Pemisah "or" */
+.divider-or {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  text-align: center;
+  margin: 0.25rem 0;
 }
 
-.btn-google:hover {
-  background-color: #f8fafc;
+.divider-or::before,
+.divider-or::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.divider-or span {
+  padding: 0 1rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Footer Register */
+.footer-register {
+  text-align: center;
+}
+
+.footer-register p {
+  font-size: 0.813rem;
+  color: #64748b;
+}
+
+.wa-link {
+  font-weight: 700;
+  color: #4f46e5;
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
+.wa-link:hover {
+  text-decoration: underline;
 }

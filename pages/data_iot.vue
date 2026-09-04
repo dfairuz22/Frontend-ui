@@ -8,7 +8,7 @@
     </transition>
 
     <div style="margin-bottom: 20px;">
-      <NuxtLink to="/" class="btn-back">
+      <NuxtLink to="/wellcome" class="btn-back">
         &larr; Kembali ke Beranda
       </NuxtLink>
     </div>
