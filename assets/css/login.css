@@ -1,0 +1,203 @@
+/* Styling Kustom untuk Halaman Login */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0f172a;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    flex-direction: row;
+  }
+}
+
+.login-left-pane {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .login-left-pane {
+    display: flex;
+    width: 50%;
+    position: relative;
+    background-color: #1e293b;
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80');
+  }
+}
+
+.login-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.badge-portal {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #cbd5e1;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pulse-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #34d399;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.login-hero-text {
+  z-index: 10;
+  margin: auto 0;
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+.hero-desc {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  max-width: 28rem;
+  line-height: 1.6;
+}
+
+.school-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: fit-content;
+}
+
+.school-logo-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.login-right-pane {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .login-right-pane {
+    width: 50%;
+  }
+}
+
+.login-right-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f8fafc;
+}
+
+.login-card-box {
+  width: 100%;
+  max-width: 28rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  outline: none;
+  font-size: 0.875rem;
+  background-color: rgba(248, 250, 252, 0.5);
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #4338ca;
+}
+
+.btn-primary {
+  width: 100%;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: file(#4338ca);
+}
+
+.btn-google {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  color: #334155;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-google:hover {
+  background-color: #f8fafc;
+}
