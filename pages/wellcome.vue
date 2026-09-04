@@ -1,44 +1,46 @@
 <template>
-  <div class="iot-container">
-    <header class="iot-header">
-      <div class="brand-box">
-        <span class="brand-badge">SK</span>
+  <div class="welcome-container">
+    <!-- HEADER / NAVBAR ATAS -->
+    <header class="welcome-header">
+      <!-- KIRI ATAS: Profil Sekolah / Tempat Profile -->
+      <div class="school-profile-card">
+        <div class="school-logo-box">SK</div>
         <div>
-          <h2 class="brand-title">SMK Bisa Hebat</h2>
-          <span class="brand-subtitle">Smart School & Lab Portal</span>
+          <p class="text-sm font-bold text-white">SMK PPLG Hebat</p>
+          <p class="text-xs text-slate-300">Software & Game Development</p>
         </div>
       </div>
-      <div class="online-indicator">
-        <span class="pulse-dot"></span> Sistem Aktif
-      </div>
+
+      <!-- KANAN ATAS: Menu Navigasi ala Gambar -->
+      <nav class="welcome-nav">
+        <NuxtLink to="/wellcome" class="nav-item">HOME</NuxtLink>
+        <NuxtLink to="/wellcome" class="nav-item">ABOUT US</NuxtLink>
+        <NuxtLink to="/data_iot" class="nav-item">DATA IOT</NuxtLink>
+        <NuxtLink to="/" class="nav-item btn-login-nav">LOGOUT</NuxtLink>
+      </nav>
     </header>
 
-    <section class="iot-card">
-      <div class="welcome-tag">Selamat Datang, Administrator Lab</div>
-      <h1 class="main-heading">Manajemen Perangkat IoT Sekolah</h1>
-      <p class="main-desc">
-        Pusat kendali dan inventaris perangkat Internet of Things (IoT) di lingkungan sekolah. Pantau status perangkat laboratorium, kelola lokasi praktikum, dan dukung kegiatan belajar mengajar berbasis teknologi modern.
-      </p>
-      
-      <div class="action-wrapper">
-        <NuxtLink to="/data_iot" class="btn-primary-custom">
-          <span>Kelola Data IoT Sekolah</span>
-          &rarr;
-        </NuxtLink>
+    <!-- KONTEN UTAMA (HERO SECTION) -->
+    <main class="welcome-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">WELCOME</h1>
+        <p class="hero-desc">
+          Pusat kendali dan inventaris perangkat Internet of Things (IoT) laboratorium sekolah. Pantau status perangkat secara real-time dan dukung era transformasi digital modern.
+        </p>
+        
+        <div class="hero-action">
+          <NuxtLink to="/data_iot" class="btn-yellow">
+            READ MORE
+          </NuxtLink>
+        </div>
       </div>
-    </section>
-    
-    <section class="iot-card">
-      <h3 class="section-title">🏫 Profil Sekolah — Pusat Keunggulan Teknologi</h3>
-      <p class="about-text">
-        Kami adalah institusi pendidikan kejuruan yang berkomitmen mencetak generasi unggul, kompeten, dan siap menghadapi era transformasi digital industri. Melalui fasilitas laboratorium yang modern dan integrasi teknologi praktikum terkini, siswa dibekali keahlian nyata di bidang rekayasa perangkat lunak, jaringan, dan sistem automasi.
-      </p>
-    </section>
+    </main>
   </div>
 </template>
 
 <script>
 export default {
+  layout: 'empty'
 }
 </script>
 

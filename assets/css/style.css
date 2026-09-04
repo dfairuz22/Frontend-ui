@@ -1,63 +1,109 @@
+/* Pastikan seluruh layar (html & body) jadi gelap dan full-screen */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1b4b !important;
+  color: #f8fafc;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Container dibuat full lebar layar dengan padding di sisi kiri-kanan */
 .container {
-  max-width: 900px;
-  margin: 40px auto;
-  font-family: Arial, sans-serif;
-  color: #333;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: #f8fafc;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #1e1b4b !important;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #ffffff;
+  letter-spacing: -0.025em;
 }
 
+/* Card dengan efek kaca gelap (Glassmorphism) */
 .card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card h3 {
   margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   font-size: 18px;
+  color: #e2e8f0;
+  font-weight: 700;
 }
 
 .form-grid {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
+/* Kotak Input & Select di Form maupun Search Bar */
 .form-grid input,
-.form-grid select {
-  padding: 8px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
+.form-grid select,
+input[type="text"] {
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #ffffff !important;
   outline: none;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.form-grid input::placeholder,
+input[type="text"]::placeholder {
+  color: #94a3b8;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+input[type="text"]:focus {
+  border-color: #6366f1;
 }
 
 .form-grid input {
   flex: 1;
+  min-width: 200px;
 }
 
 .btn-primary {
-  background-color: #3b82f6;
+  background-color: #6366f1;
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
+  background-color: #4f46e5;
+  transform: translateY(-1px);
 }
 
-/* Styling Tabel */
+/* Styling Tabel Gelap */
 .device-table {
   width: 100%;
   border-collapse: collapse;
@@ -66,98 +112,108 @@
 
 .device-table th,
 .device-table td {
-  border: 1px solid #f1f5f9;
-  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 12px;
   text-align: left;
+  font-size: 0.9rem;
 }
 
 .device-table th {
-  background-color: #f8fafc;
+  background-color: rgba(15, 23, 42, 0.6);
   font-weight: bold;
-  color: #475569;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.device-table td {
+  color: #e2e8f0;
+  background: transparent;
 }
 
 /* Badge Status */
 .status-badge {
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 5px 12px;
+  border-radius: 6px;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 
 .status-on {
-  background-color: #dcfce7;
-  color: #166534;
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .status-off {
-  background-color: #fee2e2;
-  color: #991b1b;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-/* Tombol Hapus */
+/* Tombol Hapus & Aksi */
 .btn-delete {
   background-color: #ef4444;
   color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 6px 14px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
 }
 
 .btn-delete:hover {
   background-color: #dc2626;
 }
 
+/* Tombol Kembali Warna Kuning */
 .btn-back {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #e2e8f0;
-  color: #334155;
-  padding: 8px 16px;
+  background: #fbbf24;
+  color: #1e1b4b;
+  padding: 9px 18px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: background 0.2s;
-}
-.btn-back:hover {
-  background: #cbd5e1;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.25);
+  transition: all 0.2s;
 }
 
-/* Styling Tambahan untuk Pop-up Toast & Empty State */
+.btn-back:hover {
+  background: #f59e0b;
+  transform: translateY(-1px);
+}
+
+/* Pop-up Toast & Empty State */
 .toast-notification {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #10b981; /* Hijau sukses */
+  background-color: #10b981;
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   font-weight: 600;
   z-index: 9999;
 }
 
 .toast-notification.error {
-  background-color: #ef4444; /* Merah error */
+  background-color: #ef4444;
 }
 
-/* Efek transisi halus pop-up */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-/* Styling Tampilan Kosong (Empty State) */
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .empty-icon {
@@ -165,3 +221,101 @@
   margin-bottom: 10px;
 }
 
+/* Styling Kartu Statistik Ringkasan IoT */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+}
+
+.stat-title {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.stat-value.text-green {
+  color: #34d399;
+}
+
+.stat-value.text-red {
+  color: #f87171;
+}
+
+/* Styling Modal Pop-up */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.btn-close-modal {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-close-modal:hover {
+  color: #ffffff;
+}
+
+/* Transisi Pop-up */
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+}
