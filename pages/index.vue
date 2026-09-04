@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <!-- KOLOM KIRI: Area Gambar & Identitas Sekolah / Branding -->
+    <!-- KOLOM KIRI -->
     <div class="login-left-pane">
       <div class="login-header-top">
         <span class="badge-portal">IoT Smart Lab Portal</span>
@@ -20,15 +20,15 @@
       </div>
 
       <div class="school-profile-card">
-      <div class="school-logo-box">SK</div>
+        <div class="school-logo-box">SK</div>
         <div>
-        <p class="text-sm font-bold text-white">SMK PPLG Hebat</p>
-        <p class="text-xs text-slate-200">Software & Game Development</p>
+          <p class="text-sm font-bold text-white">SMK PPLG Hebat</p>
+          <p class="text-xs text-slate-200">Software & Game Development</p>
         </div>
       </div>
-      </div>
+    </div>
 
-    <!-- KOLOM KANAN: Form Login Modern -->
+    <!-- KOLOM KANAN -->
     <div class="login-right-pane">
       <div class="login-card-box">
         <div class="card-title-area">
@@ -55,13 +55,34 @@
                 Lupa password?
               </a>
             </div>
-            <input 
-              type="password" 
-              v-model="password"
-              required 
-              placeholder="••••••••"
-              class="input-field"
-            >
+            
+            <!-- Input Password dengan Ikon Mata SVG Standar Web -->
+            <div style="position: relative; display: flex; align-items: center;">
+              <input 
+                :type="showPassword ? 'text' : 'password'"
+                v-model="password"
+                required 
+                placeholder="••••••••"
+                class="input-field"
+                style="padding-right: 42px;"
+              >
+              <span 
+                @click="showPassword = !showPassword" 
+                style="position: absolute; right: 12px; cursor: pointer; display: flex; align-items: center; color: #94a3b8;"
+                title="Tampilkan/Sembunyikan Password"
+              >
+                <!-- Ikon Mata Terbuka (Show) -->
+                <svg v-if="!showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Ikon Mata Tertutup / Dicoret (Hide) -->
+                <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </span>
+            </div>
           </div>
 
           <button type="submit" class="btn-primary">
@@ -101,6 +122,7 @@ export default {
     return {
       email: '',
       password: '',
+      showPassword: false,
       adminPhone: '62895640431365'
     }
   },
