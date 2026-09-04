@@ -1,4 +1,4 @@
-/* Styling Kustom untuk Halaman Login */
+/* Styling Kustom untuk Halaman Login & Register */
 .login-container {
   min-height: 100vh;
   display: flex;
@@ -92,17 +92,27 @@
   line-height: 1.6;
 }
 
+/* Card Profil Sekolah (Sudah Dipercerah Warna Teksnya) */
 .school-profile-card {
   display: flex;
   align-items: center;
   gap: 1rem;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(30, 41, 59, 0.75);
   padding: 1rem;
   border-radius: 1rem;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   width: fit-content;
+}
+
+.school-profile-card p.text-sm {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.school-profile-card p.text-xs {
+  color: #cbd5e1 !important; /* Diubah jadi abu-abu cerah agar sangat terlihat jelas */
 }
 
 .school-logo-box {

@@ -5,17 +5,17 @@
       <div class="login-header-top">
         <span class="badge-portal">IoT Smart Lab Portal</span>
         <div class="status-indicator">
-          <span class="text-xs text-slate-300">ID</span>
+          <span class="text-xs text-slate-300">REG</span>
           <div class="pulse-dot"></div>
         </div>
       </div>
 
       <div class="login-hero-text">
         <h1 class="hero-title">
-          Monitoring & <br>Control System.
+          Bergabung <br>Sekarang.
         </h1>
         <p class="hero-desc">
-          Platform manajemen perangkat IoT berbasis web untuk efisiensi dan kemudahan pengawasan laboratorium sekolah.
+          Buat akun baru untuk mulai memantau dan mengontrol perangkat laboratorium secara real-time.
         </p>
       </div>
 
@@ -28,15 +28,26 @@
       </div>
       </div>
 
-    <!-- KOLOM KANAN: Form Login Modern -->
+    <!-- KOLOM KANAN: Form Register -->
     <div class="login-right-pane">
       <div class="login-card-box">
         <div class="card-title-area">
-          <h2>Welcome Back!</h2>
-          <p>Silakan masuk menggunakan akun terdaftar.</p>
+          <h2>Buat Akun Baru</h2>
+          <p>Daftarkan identitas kamu untuk akses sistem.</p>
         </div>
 
-        <form class="form-group-container" @submit.prevent="handleLogin">
+        <form class="form-group-container" @submit.prevent="handleRegister">
+          <div class="input-group">
+            <label>Nama Lengkap</label>
+            <input 
+              type="text" 
+              v-model="name"
+              required 
+              placeholder="Masukkan nama lengkap"
+              class="input-field"
+            >
+          </div>
+
           <div class="input-group">
             <label>Email Address</label>
             <input 
@@ -49,12 +60,7 @@
           </div>
 
           <div class="input-group">
-            <div class="label-row">
-              <label>Password</label>
-              <a :href="waForgotLink" target="_blank" class="forgot-link">
-                Lupa password?
-              </a>
-            </div>
+            <label>Password</label>
             <input 
               type="password" 
               v-model="password"
@@ -65,26 +71,22 @@
           </div>
 
           <button type="submit" class="btn-primary">
-            Sign In to Dashboard
+            Daftar Akun
           </button>
         </form>
 
-        <!-- Garis Pemisah dengan Tulisan "or" di Tengah -->
         <div class="divider-or">
           <span>or</span>
         </div>
 
-        <!-- Tautan Register & Kendala WhatsApp -->
         <div class="footer-register">
           <p>
-            Belum punya akun? 
-            <NuxtLink to="/register" class="wa-link">
-              Daftar di sini
-            </NuxtLink>
+            Sudah punya akun? 
+            <NuxtLink to="/" class="wa-link">Login di sini</NuxtLink>
           </p>
           <p style="margin-top: 8px;">
             <a :href="waHelpLink" target="_blank" class="wa-link">
-             ⚠️ Ada kendala hubungi saja WA Admin click disini 
+              ⚠️ Ada kendala hubungi saja WA Admin click disini 
             </a>
           </p>
         </div>
@@ -99,34 +101,32 @@ export default {
   layout: 'empty',
   data() {
     return {
+      name: '',
       email: '',
       password: '',
       adminPhone: '62895640431365'
     }
   },
   computed: {
-    waForgotLink() {
-      const message = encodeURIComponent("Halo Admin, saya ingin meminta bantuan untuk reset password akun IoT Lab saya.");
-      return `https://wa.me/${this.adminPhone}?text=${message}`;
-    },
     waHelpLink() {
-      const message = encodeURIComponent("Halo Admin, saya ada kendala terkait portal IoT Lab.");
+      const message = encodeURIComponent("Halo Admin, saya ada kendala saat melakukan pendaftaran akun IoT Lab.");
       return `https://wa.me/${this.adminPhone}?text=${message}`;
     }
   },
   methods: {
-    async handleLogin() {
+    async handleRegister() {
       try {
-        const res = await this.$axios.$post('/api/login', {
+        const res = await this.$axios.$post('/api/register', {
+          name: this.name,
           email: this.email,
           password: this.password
         });
         
-        console.log('Login sukses:', res.message);
-        this.$router.push('/wellcome');
+        alert('Registrasi berhasil! Silakan login.');
+        this.$router.push('/');
       } catch (err) {
-        console.error('Login gagal:', err);
-        alert('Login gagal! Periksa kembali email dan password kamu.');
+        console.error('Register gagal:', err);
+        alert('Gagal melakukan registrasi. Periksa kembali data kamu.');
       }
     }
   }
