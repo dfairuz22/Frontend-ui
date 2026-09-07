@@ -149,7 +149,7 @@ export default {
     return {
       devices: [],
       searchQuery: '',
-      showModal: false, // Kontrol buka/tutup pop-up
+      showModal: false,
       form: {
         name: '',
         location: '',
@@ -201,7 +201,8 @@ export default {
     async fetchDevices() {
       try {
         const res = await this.$axios.$get('/api/devices')
-        this.devices = res
+        // Ambil data dari pembungkus res.data
+        this.devices = res.data || []
       } catch (err) {
         console.error('Gagal mengambil data:', err)
       }
@@ -234,12 +235,17 @@ export default {
           await this.$axios.$put(`/api/devices/${this.editId}`, this.form)
           this.showToast('Perangkat berhasil diperbarui!', 'success')
         } else {
+          // Send HTTP POST request
           await this.$axios.$post('/api/devices', this.form)
           this.showToast('Perangkat baru berhasil ditambahkan!', 'success')
         }
         
         this.closeModal()
-        this.fetchDevices()
+
+        // Panggil GET /api/devices ulang secara asinkron (dengan await)
+        // Ini yang membuat request 'devices' BARU otomatis dipanggil dan muncul di DevTools Network
+        await this.fetchDevices()
+
       } catch (err) {
         console.error('Gagal menyimpan data:', err)
         this.showToast('Terjadi kesalahan saat menyimpan data.', 'error')
@@ -261,7 +267,9 @@ export default {
         try {
           await this.$axios.$delete(`/api/devices/${id}`)
           this.showToast('Perangkat berhasil dihapus!', 'error')
-          this.fetchDevices()
+          
+          // Panggil GET ulang setelah hapus
+          await this.fetchDevices()
         } catch (err) {
           console.error('Gagal menghapus data:', err)
           this.showToast('Gagal menghapus perangkat.', 'error')

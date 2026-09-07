@@ -1,10 +1,79 @@
-/* Styling Kustom untuk Halaman Login & Register */
+/* ==========================================================
+   1. ANIMATION KEYFRAMES (Definisi Efek Animasi)
+   ========================================================== */
+
+/* Animasi Fade In (Perlahan muncul dari transparan) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animasi Pop-Up (Muncul membesar secara elastis/halus) */
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(15px);
+  }
+  70% {
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animasi Slide Up (Geser naik dari bawah) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi Slide In Kiri (Muncul dari arah kiri) */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animasi Pulse Dot Staggered */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+/* ==========================================================
+   2. STYLING UTAMA & LAYOUT
+   ========================================================== */
+
 .login-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #0f172a;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -13,6 +82,7 @@
   }
 }
 
+/* --- KOLOM KIRI (Hero Section) --- */
 .login-left-pane {
   display: none;
 }
@@ -30,6 +100,7 @@
     justify-content: space-between;
     overflow: hidden;
     background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80');
+    animation: fadeIn 0.8s ease-out forwards;
   }
 }
 
@@ -38,6 +109,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 10;
+  animation: slideInLeft 0.6s ease-out forwards;
 }
 
 .badge-portal {
@@ -50,6 +122,12 @@
   padding: 0.5rem 1rem;
   border-radius: 9999px;
   backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.badge-portal:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .status-indicator {
@@ -69,6 +147,7 @@
 .login-hero-text {
   z-index: 10;
   margin: auto 0;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-title {
@@ -92,7 +171,7 @@
   line-height: 1.6;
 }
 
-/* Card Profil Sekolah (Sudah Dipercerah Warna Teksnya) */
+/* Card Profil Sekolah */
 .school-profile-card {
   display: flex;
   align-items: center;
@@ -104,6 +183,13 @@
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   width: fit-content;
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.school-profile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.3);
 }
 
 .school-profile-card p.text-sm {
@@ -112,7 +198,7 @@
 }
 
 .school-profile-card p.text-xs {
-  color: #cbd5e1 !important; /* Diubah jadi abu-abu cerah agar sangat terlihat jelas */
+  color: #cbd5e1 !important;
 }
 
 .school-logo-box {
@@ -128,6 +214,7 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* --- KOLOM KANAN (Form Section) --- */
 .login-right-pane {
   width: 100%;
   display: flex;
@@ -135,6 +222,7 @@
   justify-content: center;
   padding: 2rem;
   background-color: #f8fafc;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 @media (min-width: 768px) {
@@ -143,18 +231,30 @@
   }
 }
 
-/* Card Container di Kanan */
+/* ==========================================================
+   3. ANIMASI POP-UP KARTU FORM (Efek Masuk & Hover)
+   ========================================================== */
+
 .login-card-box {
   width: 100%;
   max-width: 28rem;
   background-color: #ffffff;
   padding: 2.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
   border: 1px solid #f1f5f9;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  
+  /* Efek Pop-Up saat halaman terbuka */
+  animation: popUp 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.login-card-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.12), 0 10px 12px -5px rgba(0, 0, 0, 0.04);
 }
 
 .card-title-area h2 {
@@ -201,7 +301,7 @@
   font-weight: 600;
   color: #4f46e5;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .forgot-link:hover {
@@ -209,6 +309,7 @@
   text-decoration: underline;
 }
 
+/* Field Input Efek Focus In-Out Smooth */
 .input-field {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -217,7 +318,7 @@
   outline: none;
   font-size: 0.875rem;
   background-color: #f8fafc;
-  transition: all 0.2s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
   color: #0f172a;
 }
@@ -225,9 +326,11 @@
 .input-field:focus {
   border-color: #4f46e5;
   background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
 }
 
+/* Tombol Primary Efek Active & Push */
 .btn-primary {
   width: 100%;
   padding: 0.875rem 1rem;
@@ -236,7 +339,7 @@
   font-weight: bold;
   border-radius: 0.75rem;
   box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
-  transition: background-color 0.2s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.875rem;
   border: none;
   cursor: pointer;
@@ -245,6 +348,13 @@
 
 .btn-primary:hover {
   background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(79, 70, 229, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 5px 10px -3px rgba(79, 70, 229, 0.3);
 }
 
 /* Garis Pemisah "or" */
@@ -286,8 +396,11 @@
   color: #4f46e5;
   text-decoration: none;
   margin-left: 0.25rem;
+  transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .wa-link:hover {
   text-decoration: underline;
+  transform: translateX(2px);
 }
